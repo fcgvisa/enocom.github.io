@@ -1,5 +1,5 @@
 name: Commander Coriander
 markdown: redcarpet
 pygments: true
-exclude: [blog.md]
+exclude: [blog.md, README.md]
 permalink: /:year/:month/:day/:title
