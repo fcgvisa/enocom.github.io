@@ -1,4 +1,4 @@
-name: Your New Jekyll Site
+name: Commander Coriander
 markdown: redcarpet
 pygments: true
 exclude: [blog.md]
