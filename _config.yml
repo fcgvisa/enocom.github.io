@@ -1,5 +1,5 @@
 name: Commander Coriander
 markdown: redcarpet
 pygments: true
-exclude: [blog.md, README.md]
+exclude: [blog.md, README.md, Gemfile, Gemfile.lock]
 permalink: /:year/:month/:day/:title
