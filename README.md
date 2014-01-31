@@ -4,7 +4,7 @@ The new source of [CommanderCoriander](http://commandercoriander.net), powered b
 
 # ToDo
 
-1. Connect to Disqus
+1. ~~Connect to Disqus~~
 2. Redirect unrecognized requests to root
 3. Confirm URLs match old blog
 4. Style header and footer
