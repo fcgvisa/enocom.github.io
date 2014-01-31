@@ -6,6 +6,6 @@ The new source of [CommanderCoriander](http://commandercoriander.net), powered b
 
 1. ~~Connect to Disqus~~
 2. Redirect unrecognized requests to root
-3. Confirm URLs match old blog
+3. ~~Confirm URLs match old blog~~
 4. Style header and footer
 5. Add Google Analytics
