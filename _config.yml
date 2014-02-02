@@ -2,5 +2,5 @@ name: Commander Coriander
 url: http://www.commandercoriander.com
 markdown: redcarpet
 pygments: true
-exclude: [blog.md, README.md, Gemfile, Gemfile.lock]
+exclude: [blog.md, README.md, Gemfile, Gemfile.lock, Procfile, vendor, tmp]
 permalink: /blog/:year/:month/:day/:title/
