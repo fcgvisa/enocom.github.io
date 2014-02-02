@@ -9,3 +9,5 @@ The new source of [CommanderCoriander](http://commandercoriander.net), powered b
 3. ~~Confirm URLs match old blog~~
 4. Style header and footer
 5. ~~Add Google Analytics~~
+6. ~~Add RSS feed~~
+7. Adjust styles for mobile devices
