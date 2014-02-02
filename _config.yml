@@ -1,9 +1,9 @@
 name: Commander Coriander
+description: A miscellanea of details on Ruby, Ruby on Rails, test-driven development, and other software-related goodness.
+url: http://www.commandercoriander.net
 author: Eno Compton
 github_url: https://github.com/enocom
 twitter_url: http://twitter.com/username_eno
-description: A miscellanea of details on Ruby, Ruby on Rails, test-driven development, and other software-related goodness.
-url: http://www.commandercoriander.net
 markdown: redcarpet
 pygments: true
 exclude: [blog.md, README.md, Gemfile, Gemfile.lock, Procfile, vendor, tmp]
