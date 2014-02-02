@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="author" content="Eno Compton">
-        <meta name="description" content="A miscellanea of details on Ruby, Ruby on Rails, test-driven development, and other software-related goodness.">
+        <meta name="author" content="{{ site.author }}">
+        <meta name="description" content="{{ site.description }}">
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="/css/syntax.css">
@@ -22,14 +22,14 @@
           <div class="footer">
             <div class="contact">
               <p>
-                Eno Compton<br />
-                eno4@ecom.com
+              {{ site.author }}<br />
+              {{ site.author_email }}
               </p>
             </div>
             <div class="contact">
               <p>
-                <a href="https://github.com/enocom">github.com/enocom</a><br />
-                <a href="https://twitter.com/username_eno">twitter.com/username_eno</a><br />
+              <a href="{{ site.github_url }}">GitHub</a><br />
+              <a href="{{ site.twitter_url }}">Twitter</a><br />
               </p>
             </div>
           </div>

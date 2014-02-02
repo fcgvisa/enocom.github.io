@@ -1,4 +1,9 @@
 name: Commander Coriander
+author: Eno Compton
+author_email: eno4@ecom.com
+github_url: https://github.com/enocom
+twitter_url: http://twitter.com/username_eno
+description: A miscellanea of details on Ruby, Ruby on Rails, test-driven development, and other software-related goodness.
 url: http://www.commandercoriander.com
 markdown: redcarpet
 pygments: true
