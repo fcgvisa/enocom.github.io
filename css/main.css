@@ -38,6 +38,16 @@ a:visited { color: #a0a; }
   margin-bottom: 2em;
 }
 
+.posts a {
+  color: #00a;
+  text-decoration: none;
+}
+
+.posts a:hover {
+  background-color: #a00;
+  color: #fff;
+}
+
 .posts li {
   line-height: 1.75em;
 }
