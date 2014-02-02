@@ -14,7 +14,7 @@ html, body { height: 100%; }
 
 body {
   background-color: #FFF;
-  font: 13.34px Helvetica, Arial, sans-serif;
+  font: 16px Helvetica, Arial, sans-serif;
   font-size: small;
   text-align: center;
 }
@@ -22,7 +22,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%; }
 
-h1 { margin-bottom: 1em; }
 p { margin: 1em 0; }
 
 a         { color: #00a; }
@@ -63,15 +62,22 @@ a:visited { color: #a0a; }
   line-height: 1.5em;
 }
 
+.header {
+  margin-bottom: 2em;
+}
+
 .header a {
-  font-weight: bold;
   text-decoration: none;
 }
 
+.head-links li {
+  display: inline;
+}
+
 .title {
+  margin-left: -2px;
   display: inline-block;
-  font-size: 2em;
-  margin-bottom: 1em;
+  font-size: 3em;
 }
 
 .title a {
@@ -84,7 +90,6 @@ a:visited { color: #a0a; }
 
 .header a.extra {
   color: #aaa;
-  margin-left: 1em;
 }
 
 .header a.extra:hover {
@@ -101,11 +106,6 @@ a:visited { color: #a0a; }
   border-top: 4px solid #eee;
   margin-top: 2em;
   overflow: hidden;
-}
-
-.footer .contact {
-  float: left;
-  margin-right: 3em;
 }
 
 .footer .contact a {
