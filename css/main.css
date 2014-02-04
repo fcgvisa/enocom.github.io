@@ -76,6 +76,15 @@ a:visited { color: #a0a; }
   margin-bottom: 2em;
 }
 
+.header .text {
+  display: inline-block;
+}
+
+.header #logo {
+  display: inline-block;
+  margin-right: 1em;
+}
+
 .header a {
   text-decoration: none;
 }
