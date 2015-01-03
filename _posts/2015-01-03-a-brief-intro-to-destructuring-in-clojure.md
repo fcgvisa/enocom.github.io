@@ -37,7 +37,7 @@ In the case a multi-element vector, we can destructure as many individual elemen
 
 As we can see from the output, `:a` and `:b` are just like the example above, but this time the remaining elements of the vector have been collected into a seq. The choice of `more` is entirely arbitrary; any name would be perfectly fine.
 
-An alternate form similar to `& more` above is the use of the `:as` keyword which creates a binding to the original argument, in addition to whatever destructuring we wish to require.
+An alternate form similar to `& more` above is the use of the `:as` keyword which creates a binding to the original argument, in addition to whatever destructuring we require.
 
 ``` clojure
 (defn f [[a b :as original-arg]]
@@ -75,7 +75,7 @@ Because binding a certain key to a symbol of the same name (e.g., `:foo` to `foo
 ;; => {:a "my foo", :b "my bar"}
 ```
 
-By using the `:keys` keyword with a vector of key names, Clojure creates the local bindings whose name matches that of the key.
+By using the `:keys` keyword with a vector of key names, Clojure creates local bindings whose names match the key.
 
 Note that the `:as` keyword works just as we saw above with vectors:
 
