@@ -77,14 +77,12 @@ class MoviesController < ApplicationController
 end
 ```
 
-Running the test once more complains about a missing template since Rails assumes we want to render an HTML page. Instead, we tell Rails to respond only to JSON requests and to send back JSON representing all our movies.
+Running the test once more complains about a missing template since Rails assumes we want to render an HTML page. Instead, we tell Rails to send back JSON representing all our movies.
 
 ``` ruby
 class MoviesController < ApplicationController
-  respond_to :json
-
   def index
-    respond_with Movies.all
+    render json: Movies.all
   end
 end
 ```
@@ -118,7 +116,7 @@ The code to make the test pass isn't much different from that above. After addin
 class MoviesController < ApplicationController
   # ...
   def show
-    respond_with Movie.find(params[:id])
+    render json: Movie.find(params[:id])
   end
 end
 ```
@@ -155,3 +153,7 @@ Aside from the `movie_params` that we pass along with our `POST` request, we als
 Since the code for `DELETE` and `PUT` is quite similar to `GET` and `POST`, I won't introduce it here. Again, the curious reader may look at the repo on Github for the details. The spec is [here](https://github.com/enocom/json-rails/blob/master/spec/requests/movies_spec.rb) and the controller is [here](https://github.com/enocom/json-rails/blob/master/app/controllers/movies_controller.rb).
 
 Ultimately, it's a simple exercise, building a RESTful JSON API. Nonetheless, in the process of test-driving the API, one can learn quite a bit about the mundane, but still important details of the HTTP request cycle. Finally, after building the API, we now have a toy interface against which to experiment with cURL.
+
+## Update
+
+A previous version of this post suggested using `respond_to` and `respond_with`. I've updated the code examples to use the much simpler and much preferred `render json: {}` instead.
