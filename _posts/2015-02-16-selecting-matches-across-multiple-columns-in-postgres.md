@@ -8,7 +8,7 @@ Suppose we have a `persons` table with a `first_name` and `last_name` column. No
 
 A naive solution might look like the following (using ActiveRecord):
 
-```
+``` ruby
 Person.where("first_name ILIKE (?) OR last_name ILIKE (?)",
              "%#{params[:query]}%",
              "%#{params[:query]}%")
@@ -20,7 +20,7 @@ The problem with this approach is that we assume a user has entered _only_ a fir
 
 Fortunately, and even remarkably, Postgres makes this a breeze. In plain SQL, we might do something like the following:
 
-```
+``` sql
 SELECT * FROM persons
 WHERE first_name || ' ' || last_name
 ILIKE 'jane doe';
@@ -30,7 +30,7 @@ The peculiar pipes above -- otherwise recognizable as a boolean OR -- are the op
 
 This translates easily into an ActiveRecord `where` query:
 
-```
+``` ruby
 Person.where("first_name || ' ' || last_name ILIKE (?)",
              "%#{params[:query]}%")
 ```
