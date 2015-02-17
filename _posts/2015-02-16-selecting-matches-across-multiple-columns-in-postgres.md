@@ -14,7 +14,7 @@ Person.where("first_name ILIKE (?) OR last_name ILIKE (?)",
              "%#{params[:query]}%")
 ```
 
-Note that `ILIKE` for those who aren't aware means "case insensitive like."
+Note that `ILIKE` for those who aren't aware means "case insensitive like." See [here](http://www.postgresql.org/docs/current/static/functions-matching.html) for more on pattern matching.
 
 The problem with this approach is that we assume a user has entered _only_ a first name or _only_ a last name. But we want to allow a user to enter a first name and a last name. What we need to do is to test user input against a concatenation of the `first_name` and `last_name` columns.
 
@@ -23,7 +23,7 @@ Fortunately, and even remarkably, Postgres makes this a breeze. In plain SQL, we
 ``` sql
 SELECT * FROM persons
 WHERE first_name || ' ' || last_name
-ILIKE 'jane doe';
+ILIKE '%jane doe%';
 ```
 
 The peculiar pipes above -- otherwise recognizable as a boolean OR -- are the operators for string concatenation in Postgres. In effect, we are comparing a concatenated `first_name`, a space, and `last_name` against some string (i.e., `jane doe`).
