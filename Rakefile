@@ -1,6 +1,6 @@
 require "rake"
 
-task :new_post, [:post_name] do |t, args|
+task :new, [:post_name] do |t, args|
   post_name = args[:post_name]
 
   post_date = Time.now.strftime("%Y-%m-%d")
