@@ -8,7 +8,7 @@ Consider the following code:
 
 ```ruby
 class Person
-  attr_accesor :age
+  attr_accessor :age
 
   def initialize(age)
     @age = age
