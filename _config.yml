@@ -5,6 +5,6 @@ author: Eno Compton
 github_url: https://github.com/enocom
 twitter_url: http://twitter.com/username_eno
 markdown: redcarpet
-pygments: true
+highligher: rouge
 exclude: [blog.md, README.md, Gemfile, Gemfile.lock, Procfile, vendor, tmp]
 permalink: /blog/:year/:month/:day/:title/
