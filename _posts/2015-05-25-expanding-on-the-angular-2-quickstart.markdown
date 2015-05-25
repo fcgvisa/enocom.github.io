@@ -119,7 +119,7 @@ Then create a `Guestbook.html` file in the same directory with the following:
   <h1>My Cool Guestbook</h1>
 
   <ul>
-    <li *for="#guest of guests">{{guest}}</li>
+    <li *for="#guest of guests">{% raw %}{{guest}}{% endraw %}</li>
   </ul>
 </div>
 ```
@@ -209,7 +209,7 @@ First, we will update the `Guestbook.html` template:
   <!-- end new stuff -->
 
   <ul>
-    <li *for="#guest of guests">{{guest}}</li>
+    <li *for="#guest of guests">{% raw %}{{guest}}{% endraw %}</li>
   </ul>
 </div>
 ```
@@ -272,12 +272,12 @@ Let's start by updating the `Guestbook.html` template to include our new `toggle
   </button>
 
   <ul>
-    <li *for="#guest of guests">{{guest}}</li>
+    <li *for="#guest of guests">{% raw %}{{guest}}{% endraw %}}</li>
   </ul>
 
   <!-- here's the new component -->
   <toggle-message
-    message="{{currentGuestCount()}}"
+    message="{% raw %}{{currentGuestCount()}}{% endraw %}"
     button-text="Guest Count">
   </toggle-message>
 </div>
@@ -323,8 +323,8 @@ Now with all the configuration out the way, we're ready to write the `toggle-mes
 
 ``` html
 <div>
-  <button (click)="toggleMessage()">{{buttonText}}</button>
-  <h1 [hidden]="!toggle">{{message}}</h1>
+  <button (click)="toggleMessage()">{% raw %}{{buttonText}}{% endraw %}</button>
+  <h1 [hidden]="!toggle">{% raw %}{{message}}{% endraw %}</h1>
 </div>
 ```
 
