@@ -12,7 +12,7 @@ Before we get into the code, I found [WebStorm 10](https://www.jetbrains.com/web
 
 Aside from an editor, you will also need a few command line tools: `tsc`, a TypeScript compiler, `tsd`, a TypeScript definition manager, and `http-server`, a simple server which we'll use to view our app. To install these tools, run:
 
-```
+``` bash
 npm install -g tsd
 npm install -g typescript
 npm install -g http-server
@@ -20,20 +20,20 @@ npm install -g http-server
 
 To start, let's create a working directory and fetch the Angular 2 type definitions:
 
-```
+``` bash
 mkdir guestbook && cd guestbook
 tsd query angular2 --action install
 ```
 
 This will create a `typings` directory with an `angular/angular2.d.ts` file, which we will use in a moment. Next, we need to create our application files:
 
-```
+``` bash
 touch Guestbook.ts index.html
 ```
 
 And with that, we are ready to start compiling our TypeScript:
 
-```
+``` bash
 tsc --watch -m commonjs -t es5 --emitDecoratorMetadata Guestbook.ts
 ```
 
@@ -41,13 +41,13 @@ Note that whenever we create a new file, we will need to restart the `tsc` proce
 
 We now need to specify the TypeScript definitions for Angular at the top of `Guestbook.ts`:
 
-```
+``` typescript
 /// <reference path="typings/angular2/angular2.d.ts" />
 ```
 
 The last involved part of setting up Angular 2 is bootstrapping its dependencies in the `index.html`. Note that we're using JSPM to load our `Guestbook` code onto the page.
 
-```
+``` html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +71,7 @@ As a side note, at the time of this post, I tried bumping to the newest Angular 
 
 And with that, we are ready to start writing an Angular 2 app. Let's start by getting a basic component on the page. We'll import the `Component`, `View`, and `bootstrap` functions first before defining the rough outline of our guestbook component.
 
-```
+``` typescript
 import {
   Component,
   View,
@@ -82,7 +82,7 @@ import {
   selector: "guestbook"
 })
 @View({
-  template: "<h1>My Cool Guestbook</h1>"  
+  template: "<h1>My Cool Guestbook</h1>"
 })
 class Guestbook {
 
@@ -97,7 +97,7 @@ And that's about where the Angular 2 quickstart leaves off. Let's make this comp
 
 Any guestbook will have a list of names, so let's update our component to show that list. First, we'll update the template and pull it out into a separate file. We'll need to change the `View` annotation to point to a template URL. If this were Angular 1, we would want to add an `ng-repeat` somewhere for that list of names. In Angular 2, `ng-repeat` has become `For`.
 
-```
+``` typescript
 import {
   Component,
   View,
@@ -114,7 +114,7 @@ import {
 
 Then create a `Guestbook.html` file in the same directory with the following:
 
-```
+``` html
 <div>
   <h1>My Cool Guestbook</h1>
 
@@ -128,7 +128,7 @@ Assuming we have a collection called `guests` on our `Guestbook` component, the 
 
 Now that we have our template wired up correctly, let's add the `guests` field to our component:
 
-```
+``` typescript
 class Guestbook {
   guests: Array<string>;
 
@@ -144,7 +144,7 @@ To make this more interesting, let's suppose we have an API endpoint which will 
 
 First, for the service. Make a new file called `GuestService.ts` with the following code and then restart `tsc`:
 
-```
+``` typescript
 class GuestService {
   guests: Array<string>;
 
@@ -161,13 +161,13 @@ There is nothing special about this service. It's a plain JavaScript object. We 
 
 Now, back in the `Guestbook` component, we can import the service. Just below the Angular 2 imports, add the following line:
 
-```
+``` typescript
 import {GuestService} from "./GuestService";
 ```
 
 With the service now available to us, we have to tell Angular to inject it into the `Guestbook` component for us. To do that, we'll update the `@Component` annotation.
 
-```
+``` typescript
 @Component({
   selector: 'guestbook',
   injectables: [GuestService] // <--- here we configure our injectable objects
@@ -176,7 +176,7 @@ With the service now available to us, we have to tell Angular to inject it into 
 
 And then in the `Guestbook` constructor, we specify the `GuestService` as an argument:
 
-```
+``` typescript
 class Guestbook {
   guests: Array<string>;
 
@@ -194,7 +194,7 @@ Best practice would require us to use a form, but for the sake of simplicity, le
 
 First, we will update the `Guestbook.html` template:
 
-```
+``` html
 <div>
   <h1>My Cool Guestbook</h1>
 
@@ -218,7 +218,7 @@ The changes here jump right out to a developer versed in Angular 1. There is no 
 
 To make this work with our component, we need to add the `addToGuestbook` function as well as extend our GuestService to accept newly registered guests:
 
-```
+``` typescript
 class Guestbook {
   guests: Array<string>;
   service: GuestService;
@@ -236,7 +236,7 @@ class Guestbook {
 
 The `register` function on the `GuestService` is plain and simple:
 
-```
+``` typescript
 class GuestService {
   guests: Array<string>;
 
@@ -261,7 +261,7 @@ Our component will take the form of a button with some custom text. When the use
 
 Let's start by updating the `Guestbook.html` template to include our new `toggle-message` component:
 
-```
+``` html
 <div>
   <h1>My Cool Guestbook</h1>
 
@@ -285,7 +285,7 @@ Let's start by updating the `Guestbook.html` template to include our new `toggle
 
 We'll make the message and the button text configurable. The message will be the return value of a new function on our `Guestbook` component. Let's write that first:
 
-```
+``` typescript
 class Guestbook {
   // ...
 
@@ -297,7 +297,7 @@ class Guestbook {
 
 The new method on the `GuestService` is also trivial:
 
-```
+``` typescript
 class GuestService {
   // ...
   currentCount() {
@@ -308,7 +308,7 @@ class GuestService {
 
 While we're updating the `Guestbook` component, we also need to tell Angular about the component's dependency on `toggle-message`. To do that, we'll import the `toggle-message` component and update the `@View` annotation:
 
-```
+``` typescript
 // ...
 import {ToggleMessage} from "./ToggleMessage";
 
@@ -321,7 +321,7 @@ import {ToggleMessage} from "./ToggleMessage";
 
 Now with all the configuration out the way, we're ready to write the `toggle-message` component. First, create a template `ToggleMessage.html` with the following:
 
-```
+``` html
 <div>
   <button (click)="toggleMessage()">{{buttonText}}</button>
   <h1 [hidden]="!toggle">{{message}}</h1>
@@ -332,7 +332,7 @@ Again, we have a click handler which calls a function, this time `toggleMessage(
 
 With the template done, let's now write the actual component and complete this app. Create a new file called `ToggleMessage.ts` and add the following:
 
-```
+``` typescript
 import {Component, View} from "angular2/angular2";
 
 @Component({
