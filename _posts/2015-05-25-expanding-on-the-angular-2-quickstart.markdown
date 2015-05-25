@@ -41,7 +41,7 @@ Note that whenever we create a new file, we will need to restart the `tsc` proce
 
 We now need to specify the TypeScript definitions for Angular at the top of `Guestbook.ts`:
 
-``` typescript
+``` javascript
 /// <reference path="typings/angular2/angular2.d.ts" />
 ```
 
@@ -71,7 +71,7 @@ As a side note, at the time of this post, I tried bumping to the newest Angular 
 
 And with that, we are ready to start writing an Angular 2 app. Let's start by getting a basic component on the page. We'll import the `Component`, `View`, and `bootstrap` functions first before defining the rough outline of our guestbook component.
 
-``` typescript
+``` javascript
 import {
   Component,
   View,
@@ -97,7 +97,7 @@ And that's about where the Angular 2 quickstart leaves off. Let's make this comp
 
 Any guestbook will have a list of names, so let's update our component to show that list. First, we'll update the template and pull it out into a separate file. We'll need to change the `View` annotation to point to a template URL. If this were Angular 1, we would want to add an `ng-repeat` somewhere for that list of names. In Angular 2, `ng-repeat` has become `For`.
 
-``` typescript
+``` javascript
 import {
   Component,
   View,
@@ -128,7 +128,7 @@ Assuming we have a collection called `guests` on our `Guestbook` component, the 
 
 Now that we have our template wired up correctly, let's add the `guests` field to our component:
 
-``` typescript
+``` javascript
 class Guestbook {
   guests: Array<string>;
 
@@ -144,7 +144,7 @@ To make this more interesting, let's suppose we have an API endpoint which will 
 
 First, for the service. Make a new file called `GuestService.ts` with the following code and then restart `tsc`:
 
-``` typescript
+``` javascript
 class GuestService {
   guests: Array<string>;
 
@@ -161,13 +161,13 @@ There is nothing special about this service. It's a plain JavaScript object. We 
 
 Now, back in the `Guestbook` component, we can import the service. Just below the Angular 2 imports, add the following line:
 
-``` typescript
+``` javascript
 import {GuestService} from "./GuestService";
 ```
 
 With the service now available to us, we have to tell Angular to inject it into the `Guestbook` component for us. To do that, we'll update the `@Component` annotation.
 
-``` typescript
+``` javascript
 @Component({
   selector: 'guestbook',
   injectables: [GuestService] // <--- here we configure our injectable objects
@@ -176,7 +176,7 @@ With the service now available to us, we have to tell Angular to inject it into 
 
 And then in the `Guestbook` constructor, we specify the `GuestService` as an argument:
 
-``` typescript
+``` javascript
 class Guestbook {
   guests: Array<string>;
 
@@ -218,7 +218,7 @@ The changes here jump right out to a developer versed in Angular 1. There is no 
 
 To make this work with our component, we need to add the `addToGuestbook` function as well as extend our GuestService to accept newly registered guests:
 
-``` typescript
+``` javascript
 class Guestbook {
   guests: Array<string>;
   service: GuestService;
@@ -236,7 +236,7 @@ class Guestbook {
 
 The `register` function on the `GuestService` is plain and simple:
 
-``` typescript
+``` javascript
 class GuestService {
   guests: Array<string>;
 
@@ -285,7 +285,7 @@ Let's start by updating the `Guestbook.html` template to include our new `toggle
 
 We'll make the message and the button text configurable. The message will be the return value of a new function on our `Guestbook` component. Let's write that first:
 
-``` typescript
+``` javascript
 class Guestbook {
   // ...
 
@@ -297,7 +297,7 @@ class Guestbook {
 
 The new method on the `GuestService` is also trivial:
 
-``` typescript
+``` javascript
 class GuestService {
   // ...
   currentCount() {
@@ -308,7 +308,7 @@ class GuestService {
 
 While we're updating the `Guestbook` component, we also need to tell Angular about the component's dependency on `toggle-message`. To do that, we'll import the `toggle-message` component and update the `@View` annotation:
 
-``` typescript
+``` javascript
 // ...
 import {ToggleMessage} from "./ToggleMessage";
 
@@ -332,7 +332,7 @@ Again, we have a click handler which calls a function, this time `toggleMessage(
 
 With the template done, let's now write the actual component and complete this app. Create a new file called `ToggleMessage.ts` and add the following:
 
-``` typescript
+``` javascript
 import {Component, View} from "angular2/angular2";
 
 @Component({
